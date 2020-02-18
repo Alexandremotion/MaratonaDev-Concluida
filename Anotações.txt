@@ -1,0 +1,500 @@
+Plugin para toda vez que vc mudar alguma coisa no seu documento ele mudar no site sem precisar de f5: Live Server 
+
+Ctrl + K, Ctrl + F
+ = Ele faz uma formatação no codigo....
+
+section.form = Ele vai criar uma class com o nome form...
+
+
+display: grid;
+    grid-template-columns: 20px 20px 20px 20px;
+
+
+// Ele entende que cada coluna tem 20px...
+
+----------------------------------------------------
+
+grid-template-columns: 1fr 1fr 1fr 1fr;
+
+
+// Ele vai pegar o espaço que estar sobrando e fazer uma meneira de deixar esses elementos flexivos...
+
+---------------------------------------------------
+
+.form{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+// Ele vai fazer 2 colunas...
+
+---------------------------------------------------
+
+body {
+    display: flex;
+    flex-direction: column;
+}
+
+// Vc so pode usar 1
+
+---------------------------------------------------
+
+body {
+    display: flex;
+    flex-direction: column;
+
+    height: 100vh;
+}
+
+footer{
+    margin-top: auto;  
+}
+
+
+// O footer sempre vai ficar colado em baixo do site.
+
+--------------------------------------------------
+
+
+grid-gap: 45px;
+
+
+// O grid-gap tem a mesma função do margin ( Ele precisa do Displat: grid;  )
+
+-----------------------------------------------------
+
+align-items: center;
+
+// Ele vai alinhar no eixo X ( Só funciona com o display grid )
+
+---------------------------------------------------------
+
+form input::placeholder{
+    color: #ffffffaa;
+}
+
+// Colocar cor no placeholder
+
+-------------------------------------------------------
+
+.blood::before{
+    content: "";
+}
+
+// Ele vai criar um elemento before antes da div .blood.
+
+--------------------------------------------------------
+
+
+.blood {
+    color: #ff4f4f;
+    font-weight: bold;
+    font-size: 12px;
+
+    display: flex;		// Ele libera o align items é o justify content.
+    align-items: center;
+    justify-content: center;	// Ele vai alinhar no eixo Y
+
+    position: relative;         // Necessario para justify-content
+}
+
+.blood::before{
+    content: "";
+    background-color: #ff4f4f11;
+
+    width: 40px;
+    height: 40px;
+
+    position: absolute;		// Necessario para justify-content
+
+    /* Fazer a gotinha */
+    border-radius: 50%;
+    border-top-right-radius: 0;
+
+    transform: rotate(-45deg);  // Para rotacionar o item
+}
+
+-----------------------------------------------------------
+
+document
+    .querySelector('header button')
+    .addEventListener("click", function (){
+        document.querySelector('.form')
+        .classList.toggle('hide')
+    })
+
+
+// o toogle ele vai colocar uma class quando não tem, é ele vai tirar a class quando ele tiver de acordo com o evento que vc colocar...
+
+----------------------------------------------------------
+
+section.form {
+    transition: all 300ms;
+}
+
+section.form.hide {
+    opacity: 0;			// Ele vai sumir mais ainda vai dá pra mexer nele.
+    visibility: hidden;		// Ele vai sumir com ele por "completo"...
+    height: 0;			// Ele vai matar a altura.
+    margin-top: -70px;		// Ele vai matar o margin-top que definimos...
+}
+
+
+=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=- BACK-END -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+
+
+> npm init -y
+
+// Para criar um package.
+
+> npm install express
+
+// Para criar o servidor.
+
+
+// Crie um arquivo chamado server.js
+---------------------------------------------------------------------
+
+const //Ele não vai mudar
+
+
+---------------------------------------------------------------------
+
+node server.js
+
+---------------------------------------------------------------------
+
+const cor = "branco"
+const tamanho = 2.5
+
+function verificarSeOCopoEstaSujo(sujo) {
+    return `o copo ${sujo}`
+
+}
+
+const copo = {
+    cor,
+    tamanho,
+    verificarSeOCopoEstaSujo,
+}
+
+console.log(copo.verificarSeOCopoEstaSujo("está sujo"))
+
+-------------------------------------------------------------------
+
+server.listen(3000)
+
+// Para listar o servidor.
+
+--------------------------------------------------------------
+
+> node server.js
+
+// Ele vai abrir o servidor
+
+----------------------------------------------------------------
+
+server.get("/", function(req, res) {
+
+})
+
+// o ( " / " ) é para ele chegar no caminho, e quando ele chegar ele vai executar uma
+function
+
+REQ: E uma requisição.
+
+RES: Resposta.
+
+
+--------------------------------------------------------------
+
+server.listen(3000, function() {
+    console.log("Iniciei o servidor!")
+})
+
+------------------------------------------------------------------
+
+> npm install nodemon
+
+// Instale essa extesão para não precisa fechar e abrir um servidor toda hora 
+que vc fazer alguma alteração...
+
+----------------------------------------------------------------
+
+"start": "node server.js"
+
+// Para criar um atario para iniciar um servidor...
+
+---------------------------------------------------------------
+
+"start": "nodemon server.js"
+
+// E necessario para iniciar o servidor com o nodemon....
+
+------------------------------------------------------------
+
+> npm start
+
+// Vai falar pro node rodar o server no terminal do vs code...
+
+------------------------------------------------------------
+
+> npm install nunjucks 
+
+// E um motor que permiti que vc crie variaveis no html.
+
+-------------------------------------------------------------
+
+
+const nunjucks = require("nunjucks")
+nunjucks.configure("./", {
+    express: server
+})
+
+
+// Ele vai aplicar o nunjuks dentro do server...
+
+
+------------------------------------------------------------
+
+
+server.get("/", function(req, res) {
+    return res.render("index.html")
+})
+
+
+// Ele vai rendelizar o index.html...
+
+-------------------------------------------------------------
+
+server.use(express.static('public'))
+
+STATI: css, scripts, imagens e etc...
+
+// Ele vai falar pro express pegar todos os arquivos statics, e colocar em uma pasta chamada 'public'
+
+--------------------------------------------------------------
+
+
+../ Crie uma pasta e move todos os arquivos Estaticos...
+
+
+-------------------------------------------------------------
+
+const estante = [
+    {marca: "coca-cola"},
+    {marca: "coca-cola"},
+    {marca: "coca-cola"},
+]
+
+// Quartar objetos, em uma array...
+
+-------------------------------------------------------------
+
+const dornos = [
+    {
+        nome: "Diego Fernandes",
+        blood: "AB+"
+    },
+    {
+        nome: "Joãozinho Gameplay",
+        blood: "B+"
+    },
+    {
+        nome: "Irineu vcnaosabenemeu",
+        blood: "O+"
+    },
+    {
+        nome: "Tiringa da silva",
+        blood: "A-"
+    }
+]
+
+// lista de doadores.
+
+--------------------------------------------------------------------
+
+server.get("/", function(req, res) {
+    return res.render("index.html", {valor: "Qualquer"})
+})
+
+// No server.js coloca o valor qualquer coisa..
+
+<h1>{{valor}}</h1>
+
+// Coloca no index.html As variaveis são assim no html {{valor}}
+
+
+-------------------------------------------------------------------
+
+server.get("/", function(req, res) {
+    return res.render("index.html", {donors})
+})
+
+--------------------------------------------------------------------
+
+{% for donor in donors %}
+
+
+                <div class="donor">
+                    <div class="blood">AB+</div>
+                    <p>Diego Fernandes</p>
+                </div>
+
+{%endfor%}
+
+// O {% for donor in donors %} Ele vai abrir a estrutura de repetição, e o {%endfor%} vai fechar a estrura...
+
+// Ele vai repetição comforme ele vai recebendo doadores...
+
+----------------------------------------------------------------------
+
+
+<div class="donor">
+      <div class="blood">{{donor.blood}}</div>
+      <p>{{donor.name}}</p>
+</div>
+
+
+// Mude os nomes.
+
+-----------------------------------------------------------------------
+
+const nunjucks = require("nunjucks")
+nunjucks.configure("./", {
+    express: server,
+    noCache: true,
+})
+
+// Coloque a configuração: noCache: true, Para ele não criar caches...
+
+-----------------------------------------------------------------------
+
+POST: é responsavel por registrar dados.
+
+-----------------------------------------------------------------------
+
+server.post("/", function(req, res) {
+    const name = req.body.name
+    const email = req.body.email
+    const blood = req.body.blood
+
+
+
+})
+
+// Ele vai pegar todas as informações que vc colocou nos inputs.
+
+-----------------------------------------------------------------------
+
+<form action="/" method="POST">
+
+// Coloque o method="POST" no input...
+
+------------------------------------------------------------------------
+
+server.use(express.urlencoded({ extended: true }))
+
+// Por padrão o body não e abilitado, então precisa colocar esse comando para abilitar
+ele...
+
+------------------------------------------------------------------------
+
+
+server.post("/", function(req, res) {
+    const name = req.body.name
+    const email = req.body.email
+    const blood = req.body.blood
+
+    // Coloca valores dentro de uma Array.
+    donors.push({	// Ele vai adcionar um novo valor.
+        name: name,
+        blood: blood, 
+    })
+
+    return res.redirect("/") // quando vc preenche o formulario ele vai redirecionar vc 				para a pagina inicial. 
+})
+
+
+-------------------------------------------------------------------------
+
+SQL: Não é uma linguagem de programação.
+
+Usuario do Postbird: postgres
+
+** Inserir dados no banco de dados...
+INSERT INTO "donors" ("name", "email", "blood")
+VALUES ('Robson Marques', 'robsonmarques@gmail.com.br', 'A+');
+
+// Colocar esse comando no Query do Postbird.
+
+----------------------------------------------------------------------
+
+SELECT *	// O * é para pegar todos
+FROM "donors";
+
+----------------------------------------------------------------------
+
+> npm install pg 
+
+// é para poder conectar a aplicação no banco de dados...
+
+----------------------------------------------------------------------
+const Pool = require('pg').Pool
+
+// É para não ficar colocando senha toda hora para entrar.
+
+--------------------------------------------------------------------
+
+const Pool = require('pg').Pool
+const db = new Pool({
+    user: 'postgres',
+    password: 'minhasenha12345678',
+    host: 'localhost',
+    port: 5432,
+    database: 'doe'
+})
+
+// Coloque todas as informações que vc colocou na tela inicial do postbird...
+
+--------------------------------------------------------------------
+
+const query = `
+        INSERT INTO donors ("name", "email", "blood")
+        VALUES ($1, $2, $3)`
+
+
+
+    db.query(query, [name, email, blood])
+
+
+// $1 = name,  $2 = email, $2 = blood
+
+-----------------------------------------------------------------
+
+if (name == "" || email == "" || blood == "") {
+        return res.send("Todos os campos são obrigatórios.")
+    }
+
+
+// Se todos os campos for vazia ele vai dar um return.
+
+// O programa vai morrer no return, ele não vai dar mais continuidade na aplicação.
+
+---------------------------------------------------------------
+
+db.query(query, values, function(err) {
+
+        if (err) return res.send("erro no banco de dados.")
+
+        return res.redirect("/")
+})
+
+// Se ele errar na digitação ele vai retornar uma mensagem de erro no banco de dados.
+
+---------------------------------------------------------------
+const donors = result.rows
+
+// Ele vai pegar as linhas do banco de dados.
+ 
+
